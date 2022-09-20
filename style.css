@@ -3,14 +3,18 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: Helvetica;
+}
+main {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    height: auto;
     flex-wrap: wrap;
 }
 section {
+    width: auto;
+    height: auto;
     margin: 20px;
     padding: 30px;
     border-radius: 5px;
@@ -18,11 +22,11 @@ section {
 }
 a {
     font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: lighter;
     padding: 10px;
-    border: 1px double burlywood;
-    margin: 20px;
+    border: 1px solid burlywood;
+    margin: 5px;
     display: inline-block;
     border-radius: 10px;
 }
@@ -64,7 +68,7 @@ p:not(.maravillas) {
     border-radius: 20%;
 }
 .ctrans:hover {
-    transform: translate(10%, 20px);
+    transform: translate(20px, -20px);
 }
 .cscale:hover {
     transform: scale(1.5, 1.3);
@@ -74,13 +78,16 @@ p:not(.maravillas) {
 }
 .srotate:hover {
     transform: rotate(20deg);
+    transition: all 1s ease-in-out;
 }
 .origin {
     transform-origin: left top;
+    transition: all 1s ease-in-out;
 }
 .origin:hover {
     transform: rotate(45deg);
 }
+
 .dimension {
     position: relative;
     perspective: 200px;
@@ -88,7 +95,10 @@ p:not(.maravillas) {
 .rotate3d:hover {
     transform-style: preserve-3d;
     transform: rotateX(45deg);
+    transition: all 1s ease-in-out;
 }
+
+/* Card flipping */
 .card {
     width: 150px;
     height: 230px;
@@ -109,10 +119,10 @@ p:not(.maravillas) {
     border-radius: 20px;
     backface-visibility: hidden;
 }
-.card .front {
+.card .card-front {
     background-color: #807cc4;
 }
-.card .back { 
+.card .card-back { 
     background-color: tomato;
     transform: rotateY(180deg);
 }
@@ -120,21 +130,20 @@ p:not(.maravillas) {
     perspective: 1000px;
 }
 
+/* Cubo en 3D */
 .container {
     width: 150px;
     height: 150px;
     margin: 75px 0 0 75px;
     border: none;
-  }
-  
+}
 .cube {
     width: 100%;
     height: 100%;
     perspective: 600px;
     perspective-origin: 170% 170%;
     transform-style: preserve-3d;
-}
-  
+} 
 .face {
     display: block;
     position: absolute;
@@ -146,37 +155,249 @@ p:not(.maravillas) {
     font-size: 60px;
     color: white;
     text-align: center;
-}
-  
+} 
   /* Define each face based on direction */
 .front {
     background: rgba(167, 3, 3, 0.4);
     transform: translateZ(50px);
 }
-  
 .back {
     background: rgb(0, 229, 255);
     color: black;
     transform: rotateY(180deg) translateZ(50px);
 }
-  
 .right {
     background: rgba(221, 7, 241, 0.7);
     transform: rotateY(90deg) translateZ(50px);
-}
-  
+} 
 .left {
     background: rgba(212, 248, 37, 0.7);
     transform: rotateY(-90deg) translateZ(50px);
-}
-  
+}  
 .top {
     background: rgba(191, 168, 252, 0.7);
     transform: rotateX(90deg) translateZ(50px);
 }
-  
 .bottom {
     background: rgba(37, 249, 118, 0.7);
     transform: rotateX(-90deg) translateZ(50px);
 }
-  
+
+/* Transition examples */
+.container_transition {
+    display: flex;
+    gap: 50px;
+    position: relative;
+}
+.container_transition div {
+    transition: transform 2s ease-out;
+}
+.main-container-transition:hover .square1 {
+    transform: rotate(45deg);
+    transform-origin: top right;
+    transition: transform 1s cubic-bezier(.61,.16,.29,1.04) ;
+}
+.main-container-transition:hover .square2 {
+    transform: scale(1.5);
+    transform-origin: bottom left;
+    transition: transform 1s cubic-bezier(0,.49,1,.01) 1s;
+}
+.main-container-transition:hover .square3 {
+    position: relative;
+    transform: translateX(150%);
+    transform-origin: bottom left;
+    transition: transform 1s ease-in-out 1.6s;
+}
+.square1 {
+    background-color: #443ec5;
+}
+.square2 {
+    background-color: #807cc4;
+}
+.square3 {
+    background-color: #c71591;
+}
+/* circle running */
+.circle-container {
+    width: 500px;
+}
+.run{
+    display: grid;
+    place-items: center;
+    transition: transform 2s ease-in-out;
+}
+.run::after {
+    content: "😵‍💫";
+}
+.circle-container:hover .run {
+    transform: translateX(472px) rotate(360deg);
+    transition: all 2s ease-in-out;
+} 
+
+/* Movimiento impulsado por la accion */
+
+.action {
+    transition: transform 1.5s ease-out;
+}
+.action:hover {
+    transform: translateX(200pX);
+    transition: transform 1s ease-in;
+}
+
+/* Navbar */
+.navbar{
+    display: flex;
+    gap: 20px;
+}
+.navbar > li{
+    border-right: 1px solid rebeccapurple;
+    padding-right: 15px;
+}
+.first-level li{
+    position: relative;
+}
+.second-level{
+    position: relative;
+    left: 90%;
+    top: 20%;
+}
+.nav {
+    height: 350px;
+}
+.nav ul{
+    list-style: none;
+    border-left: 1px solid rebeccapurple;
+    border-bottom: 3px double rebeccapurple;
+    border-bottom-left-radius: 10px;
+    padding: 0;
+    margin-left: 20px;
+}
+.nav li a{
+    text-decoration: none;
+    border: none;
+    color: #501f6f;
+}
+.nav li>ul {
+    will-change: visibility;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    transition: visibility 1s, opacity .5s;
+}
+        /* Nota mental: display no se puede transicionar */
+.navbar li:hover >ul{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Hay propiedades que no se deberian transicionar o animar ya que consumen mas recursos y puede verse afectada la experiencia de uso del usuario. Lo mas recomendable es hacer cambios de ubicacion con transform en lugar de con margin.La extencion css trigger nos indica que tan costosos resultan ser lo cambios  */
+
+/* Existe la propiedad will-change con la que le decimos al navegador que una propiedad cambiara, asi el navegador anticipa y se prepara para hacer con mas rapidez ese cambio, como valor le ponemos la propiedad que cambiara ej:|| will-change: margin-top; ||
+
+IMPORTANTE: will change debe usarse como ultimo metodo para lidiar con problemas de performance, eveitar usar si la pagina esta trabajando bien, tambien se debe evitar su uso exesivo o resultara en problemas de performance peor, si se usa; cambiar estado con script para que no este siempre on:
+const el = document.getElementById('element');
+
+// Set will-change when the element is hovered
+el.addEventListener('mouseenter', hintBrowser);
+el.addEventListener('animationEnd', removeHint);
+
+function hintBrowser() {
+  // The optimizable properties that are going to change
+  // in the animation's keyframes block
+  this.style.willChange = 'transform, opacity';
+}
+
+function removeHint() {
+  this.style.willChange = 'auto';
+}
+*/
+
+/* Paralax effect with Alice */
+.paralax-container {
+    width: 100%;
+    height: 100vh;
+    perspective: 8px;
+    perspective-origin: 50%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+}
+.image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.image_background img {
+    width: 100%;
+    height: auto;
+    transform: translateZ(0px) scale(1);
+    transform-origin: 0 50%;
+}
+.image_background {
+    width: 100%;
+    height: auto;
+    transform: translateZ(0px) scale(1);
+    transform-origin: 0 50%;
+}
+.image_middle {
+    width: 100%;
+    height: 100%;
+    transform: translateZ(5px) scale(0.375);
+    transform-origin: 50%;
+}
+.image_foreground {
+    top: -269px;
+    width: 100%;
+    transform: translateZ(-5px);
+    transform-origin: top;
+    display: flex;
+    justify-content: center;
+}
+.cards {
+    background: burlywood;
+    border-radius: 10px;
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    transform: rotate(20deg);
+    text-align: center;
+}
+.one { 
+    top: 70%;
+    left: 30%;
+}
+.two { 
+    right: 20%;
+    bottom: -100%;
+}
+.three {
+    right: 50%;
+    bottom: -400%;
+}
+
+/* Hay un tema de accecibilidad que trata de las preferencias de movimiento reducido, esto consiste en que el usuario notifica al sistema que prefiere eliminar o remplazar las animaciones de la pagina web.
+
+Asi que si tenemos animacions que hagan parte del flujo de la pagina estos usuarios se estarian perdiendo de esa interaccion. Para ello usamos un media query:
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+De esta manera todas las animacions duraran menos, o podemos hacer por defecto la interaccion sin animaciones y poner las animaciones en el media:
+
+@media (prefers-reduced-motion: no-preference) {
+    Código de animaciones 
+}
+
+    Código sin animaciones 
+
+*/
