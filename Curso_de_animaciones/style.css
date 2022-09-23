@@ -1,7 +1,8 @@
 /* counter-reset: Crea o reinicia un contador.
 counter-increment: Incrementa un valor del contador.
 content: Inserta el contenido generado (debe usarse con un pseudoelemento).
-counter(): Función que agrega el valor de un contador a un elemento. */
+counter(): Función que agrega el valor de un contador a un elemento.
+Nota: la etiqueta que sirva de contador debe ubicarse en el html debajo de los inputs o no los leera. */
 body {
     margin: 0;
     padding: 0;
@@ -10,13 +11,35 @@ body {
     box-sizing: border-box;
     display: grid;
     place-items: center;
-    counter-reset: game;
+    counter-reset: score;
+}
+.total-count {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 25px;
+}
+input[type="checkbox"] {
+    position: absolute;
+    z-index: 3;
+    top: 30px;
+    right: 0;
+    left: 0;
+    height: 70px;
+    width: 70%;
+    margin: 0 auto;
+    appearance: none;
+    cursor: pointer;
+}
+input[type=checkbox]:focus {
+    appearance: none;
+    outline: none;
 }
 input:checked {
-    counter-increment: game;
+    counter-increment: score;
 }
 .total-count::after {
-    content: counter(game);
+    content: counter(score);
 }
 body>ul {
     display: flex;
@@ -33,6 +56,7 @@ body>ul {
     box-shadow: 0 19px 38px rgb(56, 20, 93, 0.30), 0 15px 12px rgb(56, 20, 93, 0.22) ;
     overflow: hidden;
 }
+
 .layer-1 {
     position: absolute;
     z-index: 1;
@@ -40,6 +64,212 @@ body>ul {
     width: 100px;
     bottom: 0;
     right: 40px;
+
+    animation: Capi_1 1s ease-in infinite;
+}
+
+@keyframes Capi_1 {
+    25%{
+        bottom: -120px;
+    }
+}
+.oreja_izq__Capi_1 {
+    animation: capi_1__orejita_izq 1s ease-in infinite;
+}
+@keyframes capi_1__orejita_izq {
+    25% {
+        transform: rotate(45deg);
+    }
+}
+.oreja_der__Capi_1 {
+    animation: capi_1__orejita_der 1s ease-in infinite;
+}
+
+@keyframes capi_1__orejita_der {
+    25% {
+        transform: rotate(-45deg);
+    }
+}
+
+.layer-2 {
+    position: absolute;
+    z-index: 1;
+    height: 510px;
+    width: 100px;
+    bottom: 0;
+    left: 40px;
+
+    animation: Capi_2 3s ease-in-out infinite alternate;
+}
+
+@keyframes Capi_2 {
+    15%{
+        bottom: -130px;
+    }
+    30% { 
+        bottom: 0;
+    }
+    40%{
+        bottom: -130px;
+    }
+    80% {
+        bottom: -120px;
+    }
+}
+.oreja_izq__Capi_2 {
+    animation: capi_2__orejita_izq 3s ease-in infinite alternate;
+}
+@keyframes capi_2__orejita_izq {
+    10% {
+        transform: rotate(45deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    35% {
+        transform: rotate(45deg);
+    }
+}
+.oreja_der__Capi_2 {
+    animation: capi_2__orejita_der 3s ease-in infinite alternate;
+}
+
+@keyframes capi_2__orejita_der {
+    10% {
+        transform: rotate(-45deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    35% {
+        transform: rotate(-45deg);
+    }
+}
+.layer-4 {
+    position: absolute;
+    z-index: 4;
+    height: 380px;
+    width: 100px;
+    bottom: 0;
+    left: 50px;
+
+    animation: Capi_4 7s ease-in-out infinite alternate;
+}
+
+@keyframes Capi_4 {
+    0%{
+        bottom: 0px;
+    }
+    10% {
+        bottom: -40px;
+    }
+    15% {
+        bottom: -130px;
+    }
+    25%{
+        bottom:-120px;
+    }
+    30% { 
+        bottom: 0;
+    }
+    40%{
+        bottom: -130px;
+    }
+    85%{
+        bottom: -120px;
+    }
+}
+.oreja_izq__Capi_4 {
+    animation: capi_4__orejita_izq 7s ease-in infinite alternate;
+}
+@keyframes capi_4__orejita_izq {
+    3% {
+        transform: rotate(45deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    35% {
+        transform: rotate(45deg);
+    }
+}
+.oreja_der__Capi_4 {
+    animation: capi_4__orejita_der 7s ease-in infinite alternate;
+}
+
+@keyframes capi_4__orejita_der {
+    3% {
+        transform: rotate(-45deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    35% {
+        transform: rotate(-45deg);
+    }
+}
+.layer-6 {
+    position: absolute;
+    z-index: 6;
+    height: 250px;
+    width: 100px;
+    bottom: 0;
+    right: 50px;
+
+    animation: Capi_6 10s ease-out infinite alternate;
+}
+
+@keyframes Capi_6 {
+    0%{
+        bottom: 0px;
+    }
+    10% {
+        bottom: -40px;
+    }
+    15% {
+        bottom: -130px;
+    }
+    25%{
+        bottom:-40px;
+    }
+    30% { 
+        bottom: -130px;
+    }
+    40%{
+        bottom: -130px;
+    }
+    95%{
+        bottom: -120px;
+    }
+}
+.oreja_izq__Capi_6 {
+    animation: capi_6__orejita_izq 10s ease-in infinite;
+}
+@keyframes capi_6__orejita_izq {
+    3% {
+        transform: rotate(45deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    35% {
+        transform: rotate(45deg);
+    }
+}
+.oreja_der__Capi_6 {
+    animation: capi_6__orejita_der 10s ease-in infinite;
+}
+
+@keyframes capi_6__orejita_der {
+    3% {
+        transform: rotate(-45deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    35% {
+        transform: rotate(-45deg);
+    }
 }
 .cabeza { 
     position: absolute;
@@ -81,6 +311,7 @@ body>ul {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
+
 .sombra_oreja {
     height: 10px;
     width: 50px;
@@ -89,11 +320,12 @@ body>ul {
     border-bottom-right-radius: 45px 20px;
 }
 .oreja_izq {
-    transform: rotate(45deg);
+    transform: rotate(-55deg);
     left: -5px;
 }
+
 .oreja_der {
-    transform: rotate(-45deg);
+    transform: rotate(55deg);
     right: -5px;
 }
 .ceja {
@@ -118,6 +350,23 @@ body>ul {
     height: 15px;
     background-color: rgb(51, 44, 44);
     border-radius: 50%;
+    box-shadow: 1px 1px 3px 2px rgba(123, 100, 100, 0.5);
+
+    animation-name: blink;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+    0% {
+        transform: scaleY(1);
+    }
+    5% {
+        transform: scaleY(.2);
+    }
+    10% {
+        transform: scaleY(1);
+    }
 }
 .ojo_der {
     right: 15px;
@@ -176,18 +425,11 @@ body>ul {
     top: 90px;
     background-color: rgb(182, 144, 119);
 }
-.layer-1>*{
+.layer-1>div{
     box-shadow: 3px 3px 20px 2px rgba(151, 101, 101, 0.5);
 }
-.layer-2 {
-    position: absolute;
-    z-index: 1;
-    height: 510px;
-    width: 100px;
-    bottom: 0;
-    left: 40px;
-}
-.layer-2>*{
+
+.layer-2>div{
     box-shadow: 3px 3px 20px 2px rgba(163, 114, 114, 0.5);
 }
 .layer-3 {
@@ -209,22 +451,16 @@ body>ul {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, rgb(153, 180, 112) 25%, transparent 25%) -25px 0,
-        linear-gradient(-135deg, rgb(153, 180, 112) 25%, transparent 25%) -25px 0/* ,
-        linear-gradient(45deg, rgb(123, 117, 239) 25%, transparent 25%),
-        linear-gradient(-45deg, rgb(238, 124, 234) 25%, transparent 25%) */;
+        linear-gradient(-135deg, rgb(169, 191, 138) 25%, transparent 25%) -25px 0,
+        linear-gradient(45deg, rgb(178, 158, 111) 25%, transparent 25%) 0px -25px,
+        linear-gradient(-45deg, rgb(178, 158, 111) 25%, transparent 25%) 0px -25px,
+        linear-gradient(135deg, rgb(178, 158, 111) 25%, transparent 25%) 25px 15px,
+        linear-gradient(-135deg, rgb(178, 158, 111) 25%, transparent 25%) 25px 15px;
     background-size: 50px 50px;
     background-repeat: repeat-x;
 }
 
-.layer-4 {
-    position: absolute;
-    z-index: 4;
-    height: 380px;
-    width: 100px;
-    bottom: 0;
-    left: 50px;
-}
-.layer-4>*{
+.layer-4>div{
     box-shadow: 3px 3px 20px 2px rgba(156, 102, 102, 0.5);
 }
 .layer-5 {
@@ -240,15 +476,8 @@ body>ul {
     overflow: hidden;
     box-shadow: 6px 7px 16px 5px rgba(115, 75, 75, 0.5);
 }
-.layer-6 {
-    position: absolute;
-    z-index: 6;
-    height: 250px;
-    width: 100px;
-    bottom: 0;
-    right: 50px;
-}
-.layer-6>*{
+
+.layer-6>div{
     box-shadow: 3px 3px 20px 2px rgba(168, 118, 118, 0.5);
 }
 .layer-7 {
@@ -265,6 +494,15 @@ body>ul {
     overflow: hidden;
     box-shadow: -6px 7px 16px 5px rgba(115, 75, 75, 0.5);
 }
+.bush {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100px;
+    width: 60px;
+    border-radius: 40px 40px 0 0;
+    background: rgb(131, 175, 101);
+}
 .layer-8 {
     position: absolute;
     z-index: 8;
@@ -274,10 +512,42 @@ body>ul {
     margin: 0 auto;
     width: 140px;
     height: 70px;
-    background-color: rgb(139, 122, 202);
-    overflow: hidden;
-    border-radius: 50% 50% 0 0;
+    background-color: rgb(202, 193, 122);
     box-shadow: 6px 7px 16px 5px rgba(151, 44, 44, 0.5);
+    border-radius: 50% 50% 0 0;
+}
+.bushL8_1 {
+    top: -50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: rgb(202, 193, 122);
+}
+.bushL8_2 {
+    left: -30px;
+    margin: 0 auto;
+    transform: rotate(-45deg);
+    background-color: rgb(202, 193, 122);
+}
+.bushL8_3 {
+    right: 10px;
+    margin: 0 auto;
+    transform: rotate(45deg);
+    background-color: rgb(202, 193, 122);
+}
+.bushL9_1{
+    right: -10px;
+    bottom: 40px;
+    transform: rotate(65deg);
+}
+.bushL9_2{
+    right: -40px;
+    bottom: 0;
+    transform: rotate(80deg);
+}
+.bushL9_3 {
+    top: -40px;
+    left: 20px;
 }
 .layer-9 {
     position: absolute;
@@ -287,13 +557,11 @@ body>ul {
     margin: 0 auto;
     width: 140px;
     height: 170px;
-    border-radius: 50% 50% 0 0;
-    transform: rotate(45deg);
+    border-radius: 40% 40% 0 0;
+    background-color: rgb(131, 175, 101);
     box-shadow: 0px 10px 16px 5px rgba(151, 44, 44, 0.5);
-    background-image:  linear-gradient(135deg, #c0bb86 25%, transparent 25%), linear-gradient(225deg, #cdbe18 25%, transparent 25%), linear-gradient(45deg, #c1b4ee 25%, transparent 25%), linear-gradient(315deg, #eeb4c9 25%, #969db1 25%);
-    background-size: 10px 10px;
-    background-repeat: repeat;
 }
+
 .layer-10 {
     position: absolute;
     z-index: 10;
@@ -302,8 +570,23 @@ body>ul {
     margin: 0 auto;
     width: 140px;
     height: 170px;
-    background-color: rgb(202, 122, 191);
-    border-radius: 50% 50% 0 0;
-    transform: rotate(-45deg);
+    background-color: rgb(123, 202, 122);
     box-shadow: -6px 7px 16px 5px rgba(151, 44, 44, 0.5);
+    border-radius: 40% 40% 0 0;
+}
+.bushL10_1 {
+    left: -20px;
+    transform: rotate(-90deg);
+    background-color: rgb(123, 202, 122);
+}
+.bushL10_2 {
+    top: 20px;
+    left: -10px;
+    transform: rotate(-55deg);
+    background-color: rgb(123, 202, 122);
+}
+.bushL10_3 {
+    top: -30px;
+    left: 40px;
+    background-color: rgb(123, 202, 122);
 }
